@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".MainActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <Button
+        android:id="@+id/pizzaButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/pizzas"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/calzoneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/calzoneButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/calzones_stromboli"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/pastaButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizzaButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+    <Button
+        android:id="@+id/pastaButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/pasta"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/saladsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calzoneButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+    <Button
+        android:id="@+id/saladsButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/salads"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sweetsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pastaButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+    <Button
+        android:id="@+id/sweetsButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/sweets"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/sidesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saladsButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+    <Button
+        android:id="@+id/sidesButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/sides"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/slicesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sweetsButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+    <Button
+        android:id="@+id/slicesButton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="244dp"
+        android:text="@string/slices"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sidesButton"
+        style="?android:attr/borderlessButtonStyle"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

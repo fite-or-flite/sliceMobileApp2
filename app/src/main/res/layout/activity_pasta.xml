@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorPrimary"
+    tools:context=".pasta"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        >
+
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/spaghetti_and_meatballs"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/spaghetti"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/spaghetti_and_meatballs_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addSpaghettiAndMeatballs"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/spaghetti_and_meatballs_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spaghetti_and_meatballs"/>
+
+    <TextView
+        android:id="@+id/spaghetti_and_meatballs_description"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/spaghetti_description"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spaghetti_and_meatballs"
+        app:layout_constraintBottom_toTopOf="@id/mac_and_cheese"
+        />
+
+    <TextView
+        android:id="@+id/mac_and_cheese"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/mac_and_cheese"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/mac_and_cheese_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spaghetti_and_meatballs_description" />
+
+    <ImageButton
+        android:id="@+id/addMacAndCheese"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/mac_and_cheese_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mac_and_cheese"/>
+
+    <TextView
+        android:id="@+id/mac_and_cheese_description"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/mac_and_cheese_description"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mac_and_cheese"
+        app:layout_constraintBottom_toTopOf="@id/lasagna"
+        />
+
+    <TextView
+        android:id="@+id/lasagna"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/lasagna"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/lasagna_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mac_and_cheese_description" />
+
+    <ImageButton
+        android:id="@+id/addLasagna"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/lasagna_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lasagna"/>
+
+    <TextView
+        android:id="@+id/lasagna_description"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/lasagna_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/smoked_meatloaf"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lasagna" />
+
+    <TextView
+        android:id="@+id/smoked_meatloaf"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/meatloaf"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/smoked_meatloaf_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lasagna_description" />
+
+    <ImageButton
+        android:id="@+id/addSmokedMeatloaf"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/smoked_meatloaf_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/smoked_meatloaf"/>
+
+    <TextView
+        android:id="@+id/smoked_meatloaf_description"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/meatloaf_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/bbq_shrimp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smoked_meatloaf" />
+
+    <TextView
+        android:id="@+id/bbq_shrimp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/bbq_shrimp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/bbq_shrimp_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/smoked_meatloaf_description" />
+
+    <ImageButton
+        android:id="@+id/addBBQShrimp"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/bbq_shrimp_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bbq_shrimp"/>
+
+        <TextView
+            android:id="@+id/bbq_shrimp_description"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/bbq_shrimp_description"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bbq_shrimp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

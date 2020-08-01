@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorPrimary"
+    tools:context=".calzone"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        >
+
+
+    <TextView
+        android:id="@+id/cheese_calzone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/cheese_calzone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cheese_calzone_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addCheeseCalzone"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/cheese_calzone_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cheese_calzone"/>
+
+    <TextView
+        android:id="@+id/cheese_calzone_description"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/cheese_calzone_description"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cheese_calzone"
+        app:layout_constraintBottom_toTopOf="@id/spinach_calzone"
+        />
+
+    <TextView
+        android:id="@+id/spinach_calzone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/spinach_calzone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinach_calzone_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cheese_calzone_description" />
+
+    <ImageButton
+        android:id="@+id/addSpinachCalzone"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/spinach_calzone_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinach_calzone"/>
+
+    <TextView
+        android:id="@+id/spinach_calzone_description"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/spinach_calzone_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/trucker_calzone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinach_calzone" />
+
+    <TextView
+        android:id="@+id/trucker_calzone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/trucker_calzone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/trucker_calzone_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinach_calzone_description" />
+
+    <ImageButton
+        android:id="@+id/addTruckerCalzone"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/trucker_calzone_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/trucker_calzone" />
+
+    <TextView
+        android:id="@+id/trucker_calzone_description"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/trucker_calzone_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/wicked_garden_calzone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trucker_calzone" />
+
+    <TextView
+        android:id="@+id/wicked_garden_calzone"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/wicked_garden_calzone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/wicked_garden_calzone_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trucker_calzone_description" />
+
+    <ImageButton
+        android:id="@+id/addWickedGardenCalzone"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/wicked_garden_calzone_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wicked_garden_calzone"/>
+
+    <TextView
+        android:id="@+id/wicked_garden_calzone_description"
+        android:layout_width="350dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/wicked_garden_calzone_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/meatball_stromboli"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wicked_garden_calzone" />
+
+    <TextView
+        android:id="@+id/meatball_stromboli"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/meatball_stromboli"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/meatball_stromboli_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wicked_garden_calzone_description" />
+
+    <ImageButton
+        android:id="@+id/addMeatballStromboli"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/meatball_stromboli_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/meatball_stromboli"/>
+
+        <TextView
+            android:id="@+id/meatball_stromboli_description"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/meatball_stromboli_description"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meatball_stromboli" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

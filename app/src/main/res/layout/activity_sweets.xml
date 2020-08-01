@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/colorPrimary"
+    tools:context=".sweets"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        >
+
+        <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/seasonal_bread_pudding"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/bread_pudding"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/seasonal_bread_pudding_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addSeasonalBreadPudding"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/seasonal_bread_pudding_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seasonal_bread_pudding"/>
+
+    <TextView
+        android:id="@+id/seasonal_bread_pudding_description"
+        android:layout_width="350dp"
+        android:layout_height="050dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/bread_pudding_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/brownie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seasonal_bread_pudding" />
+
+    <TextView
+        android:id="@+id/brownie"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/brownie"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/brownie_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seasonal_bread_pudding_description" />
+
+    <ImageButton
+        android:id="@+id/addBrownie"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/brownie_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/brownie"/>
+
+    <TextView
+        android:id="@+id/brownie_description"
+        android:layout_width="350dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/brownie_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/cookie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brownie" />
+
+    <TextView
+        android:id="@+id/cookie"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/cookie"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cookie_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brownie_description" />
+
+    <ImageButton
+        android:id="@+id/addCookie"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/cookie_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cookie"/>
+
+    <TextView
+        android:id="@+id/cookie_description"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/cookie_description"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/brookie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cookie" />
+
+    <TextView
+        android:id="@+id/brookie"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/brookie"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/brookie_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cookie_description" />
+
+    <ImageButton
+        android:id="@+id/addBrookie"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="5dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toTopOf="@+id/brookie_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/brookie"/>
+
+    <TextView
+        android:id="@+id/brookie_description"
+        android:layout_width="350dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/brookie_description"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brookie" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
