@@ -3,29 +3,26 @@ package com.example.slicemobileapp4;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
 import android.widget.TextView;
 
-public class customize_item extends AppCompatActivity {
+public class customize_pizza extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customize_item);
+        setContentView(R.layout.activity_customize_pizza);
 
-        TextView name = findViewById(R.id.item_name);
-        TextView description = findViewById(R.id.item_description);
+        TextView name = findViewById(R.id.pizza_name);
+        TextView description = findViewById(R.id.pizza_description);
 
         Intent intent = getIntent();
         String str = intent.getStringExtra("name");
         String desc = intent.getStringExtra("description");
         name.setText(str);
         description.setText(desc);
+
+
     }
 }

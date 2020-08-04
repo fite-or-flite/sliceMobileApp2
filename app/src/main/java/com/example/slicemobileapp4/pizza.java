@@ -42,13 +42,12 @@ public class pizza extends AppCompatActivity implements View.OnClickListener {
         add_crush_pizza.setOnClickListener(this);
         add_pga_pizza.setOnClickListener(this);
 
-
     }
 
     @Override
     public void onClick(View view) {
 
-        Intent intent = new Intent(view.getContext(), customize_item.class);
+        Intent intent = new Intent(view.getContext(), customize_pizza.class);
         String name = "";
         String description = "";
 
