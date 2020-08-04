@@ -118,5 +118,6 @@
     <string name="title_activity_sides">sides</string>
     <string name="title_activity_sweets">sweets</string>
     <string name="title_activity_slices">slices</string>
+    <string name="title_activity_customize_item">customize_item</string>
 
 </resources>
