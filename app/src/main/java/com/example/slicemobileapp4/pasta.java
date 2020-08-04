@@ -20,6 +20,13 @@ public class pasta extends AppCompatActivity implements View.OnClickListener {
         ImageButton add_lasagna = findViewById(R.id.addLasagna);
         ImageButton add_meatloaf = findViewById(R.id.addSmokedMeatloaf);
         ImageButton add_bbq_shrimp = findViewById(R.id.addBBQShrimp);
+
+        add_spaghetti_and_meatballs.setOnClickListener(this);
+        add_mac_and_cheese.setOnClickListener(this);
+        add_lasagna.setOnClickListener(this);
+        add_meatloaf.setOnClickListener(this);
+        add_bbq_shrimp.setOnClickListener(this);
+
     }
 
     @Override
