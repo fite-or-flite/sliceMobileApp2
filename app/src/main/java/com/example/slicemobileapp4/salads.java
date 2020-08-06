@@ -35,7 +35,7 @@ public class salads extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-    Intent intent = new Intent(view.getContext(), customize_item.class);
+    Intent intent = new Intent(view.getContext(), customize_salad.class);
     String name = "";
     String description = "";
 
