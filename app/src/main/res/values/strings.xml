@@ -119,5 +119,9 @@
     <string name="title_activity_sweets">sweets</string>
     <string name="title_activity_slices">slices</string>
     <string name="title_activity_customize_item">customize_item</string>
+    <string name="special_instructions_here">Allergies or special instructions here</string>
+    <string name="title_activity_customize_salad">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

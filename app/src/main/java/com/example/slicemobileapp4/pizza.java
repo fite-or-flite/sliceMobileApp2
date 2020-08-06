@@ -7,6 +7,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class pizza extends AppCompatActivity implements View.OnClickListener {
     @Override
@@ -118,7 +119,7 @@ public class pizza extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             default:
-                //toast message?
+                Toast.makeText(pizza.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
                 break;
 
         }

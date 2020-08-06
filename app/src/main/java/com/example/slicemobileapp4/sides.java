@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class sides extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,7 +47,7 @@ public class sides extends AppCompatActivity implements View.OnClickListener {
                 description = getString(R.string.spinach_artichoke_dip_description);
                 break;
             default:
-                //toast
+                Toast.makeText(sides.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
                 break;
         }
 

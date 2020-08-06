@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".customize_salad"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_customize_salad"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
             android:name=".customize_item"
             android:label="@string/title_activity_customize_item"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customize_pizza"
             android:label="@string/title_activity_customize_item"

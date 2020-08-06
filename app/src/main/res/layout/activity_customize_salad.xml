@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".customize_pizza">
+    tools:context=".customize_salad">
+
 
     <include
         android:id="@+id/include"
         layout="@layout/toolbar" />
 
     <TextView
-        android:id="@+id/pizza_name"
+        android:id="@+id/salad_name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -23,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
     <TextView
-        android:id="@+id/pizza_description"
+        android:id="@+id/salad_description"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -31,7 +32,7 @@
         android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pizza_name" />
+        app:layout_constraintTop_toBottomOf="@+id/salad_name" />
 
 
     <RadioGroup
@@ -44,23 +45,18 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pizza_description">
+        app:layout_constraintTop_toBottomOf="@id/salad_description">
 
         <RadioButton
-            android:id="@+id/size_choice"
+            android:id="@+id/salad_size_choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Small(10 in)" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Medium (14 in)" />
+            android:text="Small" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large (18 in)" />
+            android:text="Large" />
 
     </RadioGroup>
 

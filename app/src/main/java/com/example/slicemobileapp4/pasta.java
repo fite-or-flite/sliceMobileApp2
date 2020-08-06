@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class pasta extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,7 +59,7 @@ public class pasta extends AppCompatActivity implements View.OnClickListener {
                 description = getString(R.string.bbq_shrimp_description);
                 break;
             default:
-                //toast
+                Toast.makeText(pasta.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
                 break;
         }
 

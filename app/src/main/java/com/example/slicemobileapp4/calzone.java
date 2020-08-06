@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class calzone extends AppCompatActivity implements View.OnClickListener {
     @Override
@@ -60,8 +61,8 @@ public class calzone extends AppCompatActivity implements View.OnClickListener {
                 description = getString(R.string.meatball_stromboli_description);
                 break;
             default:
-                //toast?
-                break;
+                Toast.makeText(calzone.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
+            break;
         }
 
         intent.putExtra("name", name);

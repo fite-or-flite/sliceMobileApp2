@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class salads extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,7 +61,7 @@ public class salads extends AppCompatActivity implements View.OnClickListener {
             description = getString(R.string.chef_salad_description);
             break;
         default:
-            //toast
+            Toast.makeText(salads.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
             break;
     }
 
