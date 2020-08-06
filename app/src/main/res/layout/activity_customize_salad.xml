@@ -77,6 +77,7 @@
             android:id="@+id/special_instructions_text"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:inputType="textMultiLine"
             android:hint="@string/special_instructions_here" />
 
     </com.google.android.material.textfield.TextInputLayout>
