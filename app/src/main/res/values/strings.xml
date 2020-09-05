@@ -10,7 +10,7 @@
     <string name="title_activity_sweets">sweets</string>
     <string name="title_activity_slices">slices</string>
     <string name="title_activity_customize_item">customize item</string>
-    <string name="special_instructions_here">Allergies, dietary restrictions, or special instructions here</string>
+    <string name="special_instructions">Allergies, dietary restrictions, or special instructions here</string>
     <string name="title_activity_customize_salad">customize salad</string>
     <string name="slice_logo">Slice Logo</string>
     <string name="shopping_cart">Shopping Cart</string>

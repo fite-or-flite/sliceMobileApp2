@@ -47,17 +47,19 @@
         app:layout_constraintTop_toBottomOf="@id/pizza_description">
 
         <RadioButton
-            android:id="@+id/size_choice"
+            android:id="@+id/size_choice_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Small(10 in)" />
 
         <RadioButton
+            android:id="@+id/size_choice_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Medium (14 in)" />
 
         <RadioButton
+            android:id="@+id/size_choice_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Large (18 in)" />
@@ -80,8 +82,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/special_instructions_text"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="@string/special_instructions_here" />
+            android:layout_height="wrap_content"
+            android:hint="@string/special_instructions" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

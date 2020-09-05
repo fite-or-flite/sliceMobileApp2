@@ -48,12 +48,13 @@
         app:layout_constraintTop_toBottomOf="@id/salad_description">
 
         <RadioButton
-            android:id="@+id/salad_size_choice"
+            android:id="@+id/salad_size_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Small" />
 
         <RadioButton
+            android:id="@+id/salad_size_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Large" />
@@ -76,9 +77,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/special_instructions_text"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:inputType="textMultiLine"
-            android:hint="@string/special_instructions_here" />
+            android:layout_height="wrap_content"
+            android:hint="@string/special_instructions" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
