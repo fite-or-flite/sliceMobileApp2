@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button sweetsButton = findViewById(R.id.sweetsButton);
         Button sidesButton = findViewById(R.id.sidesButton);
         Button slicesButton = findViewById(R.id.slicesButton);
+        Button addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
 
+        addToFirebaseButton.setOnClickListener(this);
         pizzaButton.setOnClickListener(this);
         calzoneButton.setOnClickListener(this);
         pastaButton.setOnClickListener(this);
@@ -57,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.slicesButton:
                 intent = new Intent(view.getContext(), slices.class);
+                break;
+            case R.id.addItemsToFirebase:
+                intent = new Intent(view.getContext(), add_to_firebase.class);
                 break;
             default:
                 Toast.makeText(MainActivity.this, "Action not recognized. Try again.", Toast.LENGTH_SHORT).show();
