@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "205729376124",
+    "firebase_url": "https://slice-mobile-app-4.firebaseio.com",
+    "project_id": "slice-mobile-app-4",
+    "storage_bucket": "slice-mobile-app-4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205729376124:android:20bcdf8695abc68c7866f9",
+        "android_client_info": {
+          "package_name": "com.example.slicemobileapp4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205729376124-hb8q1mrj11ttg90l7u1h5tc3htoec5de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzKHi2H_UUd6jb6ZW8A_4VQLyXZ-4Ja8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205729376124-hb8q1mrj11ttg90l7u1h5tc3htoec5de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

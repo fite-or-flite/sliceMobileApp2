@@ -40,8 +40,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".calzone"
-            android:label="@string/title_activity_calzone">
-        </activity>
+            android:label="@string/title_activity_calzone"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
         <activity
             android:name=".pasta"
             android:label="@string/title_activity_pasta"
@@ -51,6 +52,10 @@
             android:label="@string/title_activity_pizza"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"
+            />
+        <activity android:name=".add_to_firebase"
+            android:label="addToFirebase"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             />
         <activity android:name=".MainActivity">
             <meta-data
