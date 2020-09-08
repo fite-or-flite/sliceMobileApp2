@@ -10,45 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".customize_salad"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_customize_salad"
-            android:theme="@style/FullscreenTheme"/>
-        <activity
-            android:name=".customize_item"
-            android:label="@string/title_activity_customize_item"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".customize_pizza"
-            android:label="@string/title_activity_customize_item"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".slices"
-            android:label="@string/title_activity_slices"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".sweets"
-            android:label="@string/title_activity_sweets"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".sides"
-            android:label="@string/title_activity_sides"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".salads"
-            android:label="@string/title_activity_salads"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".calzone"
-            android:label="@string/title_activity_calzone"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            />
-        <activity
-            android:name=".pasta"
-            android:label="@string/title_activity_pasta"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".pizza"
+            android:name=".CategoryDetails"
             android:label="@string/title_activity_pizza"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".MainActivity"

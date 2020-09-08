@@ -60,11 +60,11 @@ public class add_to_firebase extends AppCompatActivity {
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference ref = database.getReference().child(category).child(productName);
                     //add info from edit texts to firebase
-                    ref.child("Name").setValue(name);
-                    ref.child("Description").setValue(description);
-                    ref.child("Small Price").setValue(smallPrice);
-                    ref.child("Medium Price").setValue(mediumPrice);
-                    ref.child("Large Price").setValue(largePrice);
+                    ref.child("name").setValue(name);
+                    ref.child("description").setValue(description);
+                    ref.child("smallPrice").setValue(smallPrice);
+                    ref.child("mediumPrice").setValue(mediumPrice);
+                    ref.child("largePrice").setValue(largePrice);
                     //on success?
                     Toast.makeText(add_to_firebase.this, "Sending to firebase", Toast.LENGTH_SHORT).show();
                 }
