@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,19 @@ public class ItemDetails extends AppCompatActivity {
                 itemDetailsDescription = dataSnapshot.child("description").getValue().toString();
                 itemName.setText(itemDetailsName);
                 itemDescription.setText(itemDetailsDescription);
+
+                //removing radio buttons if no price data
+                if (dataSnapshot.child("smallPrice").getValue().toString().equals("")) {
+                    itemSmallPrice.setVisibility(View.INVISIBLE);
+                } else {
+                    itemSmallPrice.setText("Small: " + dataSnapshot.child("smallPrice").getValue().toString());
+                }
+                if (dataSnapshot.child("mediumPrice").getValue().toString().equals("")) {
+                    itemMediumPrice.setVisibility(View.INVISIBLE);
+                } else {
+                    itemMediumPrice.setText("Medium: " + dataSnapshot.child("mediumPrice").getValue().toString());
+                }
+                itemLargePrice.setText("Large: " + dataSnapshot.child("largePrice").getValue().toString());
             }
 
             @Override
@@ -71,20 +85,6 @@ public class ItemDetails extends AppCompatActivity {
         itemMediumPrice = findViewById(R.id.item_view_medium_price_radio_button);
         itemLargePrice = findViewById(R.id.item_view_large_price_radio_button);
         addItemToCart = findViewById(R.id.add_item_to_order_button);
-
-        //commented while fixing other stuff
-        //removing radio buttons if no price data
-//        if (databaseReference.child("smallPrice").getKey().equals("")) {
-//            itemSmallPrice.setVisibility(View.INVISIBLE);
-//        } else {
-//            itemSmallPrice.setText(databaseReference.child("smallPrice").getKey());
-//        }
-//        if (databaseReference.child("mediumPrice").getKey().equals("")) {
-//            itemMediumPrice.setVisibility(View.INVISIBLE);
-//        } else {
-//            itemMediumPrice.setText(databaseReference.child("mediumPrice").getKey());
-//        }
-//        itemLargePrice.setText(databaseReference.child("largePrice").getKey());
 
         addItemToCart.setOnClickListener(new View.OnClickListener() {
             @Override
