@@ -1,5 +1,6 @@
 package com.example.slicemobileapp4;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,62 +9,82 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.slicemobileapp4.models.ItemModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class ItemDetails extends AppCompatActivity {
 
     TextView itemName, itemDescription;
     Button addItemToCart;
     RadioButton itemSmallPrice, itemMediumPrice, itemLargePrice;
+    DatabaseReference databaseReference;
+    String intentTitle = "", intentCategory = "", itemDetailsName = "", itemDetailsDescription = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
 
-        //trying to check in intent really got passed
-        //think it's the intent that causes crash879
-        String intentName = "", intentCategory = "";
         Intent intent = getIntent();
-        intentName = intent.getStringExtra("productName");
-        intentCategory = intent.getExtras().getString("category");
+        intentCategory = intent.getStringExtra("category");
+        intentTitle = intent.getStringExtra("productTitle");
 
-        if (intentName.equals("")) {
-            intentName = "cheese_pizza";
-        }
-        if (intentCategory.equals("")) {
-            intentCategory = "Pizza";
-        }
+        setUpButtons();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(intentCategory).child(intentName);
+        databaseReference = FirebaseDatabase.getInstance().getReference()
+                .child(intentCategory)
+                .child(intentTitle);
 
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            //this should only happen once (i think)
+                itemDetailsName = dataSnapshot.child("name").getValue().toString();
+                itemDetailsDescription = dataSnapshot.child("description").getValue().toString();
+                itemName.setText(itemDetailsName);
+                itemDescription.setText(itemDetailsDescription);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+
+    public void setUpButtons() {
         itemName = findViewById(R.id.item_view_name);
         itemDescription = findViewById(R.id.item_view_description);
-//commented to try to find crash(/npe?)
-//        itemSmallPrice = findViewById(R.id.item_view_small_price_radio_button);
-//        itemMediumPrice = findViewById(R.id.item_view_medium_price_radio_button);
-//        itemLargePrice = findViewById(R.id.item_view_large_price_radio_button);
+        itemSmallPrice = findViewById(R.id.item_view_small_price_radio_button);
+        itemMediumPrice = findViewById(R.id.item_view_medium_price_radio_button);
+        itemLargePrice = findViewById(R.id.item_view_large_price_radio_button);
         addItemToCart = findViewById(R.id.add_item_to_order_button);
 
-        itemName.setText(databaseReference.child("name").toString());
-        itemDescription.setText(databaseReference.child("description").toString());
-
+        //commented while fixing other stuff
         //removing radio buttons if no price data
-//        if (databaseReference.child("smallPrice").toString().equals("")) {
+//        if (databaseReference.child("smallPrice").getKey().equals("")) {
 //            itemSmallPrice.setVisibility(View.INVISIBLE);
 //        } else {
-//            itemSmallPrice.setText(databaseReference.child("smallPrice").toString());
+//            itemSmallPrice.setText(databaseReference.child("smallPrice").getKey());
 //        }
-//        if (databaseReference.child("mediumPrice").toString().equals("")) {
+//        if (databaseReference.child("mediumPrice").getKey().equals("")) {
 //            itemMediumPrice.setVisibility(View.INVISIBLE);
 //        } else {
-//            itemMediumPrice.setText(databaseReference.child("mediumPrice").toString());
+//            itemMediumPrice.setText(databaseReference.child("mediumPrice").getKey());
 //        }
-//        itemLargePrice.setText(databaseReference.child("largePrice").toString());
-
+//        itemLargePrice.setText(databaseReference.child("largePrice").getKey());
 
         addItemToCart.setOnClickListener(new View.OnClickListener() {
             @Override

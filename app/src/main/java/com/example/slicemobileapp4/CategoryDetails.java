@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,26 +50,26 @@ public class CategoryDetails extends AppCompatActivity {
         FirebaseRecyclerAdapter<ItemModel, CategoryProductView> adapter = new FirebaseRecyclerAdapter<ItemModel, CategoryProductView>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final CategoryProductView categoryProductView, int position, @NonNull ItemModel itemModel) {
-                String productName = itemModel.getName();
-                String productDescription = itemModel.getDescription();
+                final String itemModelName = itemModel.getName();
+                String itemModelDescription = itemModel.getDescription();
 
-                categoryProductView.itemName.setText(productName);
-                categoryProductView.itemDescription.setText(productDescription);
+                categoryProductView.itemName.setText(itemModelName);
+                categoryProductView.itemDescription.setText(itemModelDescription);
 
-                //this makes it crash :( i think
                 // setup for "plus" (add to order) button
                 categoryProductView.addItemButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         int position = categoryProductView.getAdapterPosition(); //get position???
-                        String productName = categoryProductView.itemName.toString(); //get name of product in view, somehow
+                        String productTitle = itemModelName.replace(" ", "_").toLowerCase();
+
+                        //categoryProductView.itemName.getText().toString(); //get name of product in view, somehow
 
                         Intent onClickIntent = new Intent(CategoryDetails.this, ItemDetails.class);
                         onClickIntent.putExtra("category", intentCategory);
-                        onClickIntent.putExtra("productName", productName);
-
+                        onClickIntent.putExtra("productTitle", productTitle);
+                        //passing correct category, productTitle
                         startActivity(onClickIntent);
-
                     }
                 });
             }
