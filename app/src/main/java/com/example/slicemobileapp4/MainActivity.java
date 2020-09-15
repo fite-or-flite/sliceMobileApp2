@@ -1,11 +1,17 @@
 package com.example.slicemobileapp4;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 

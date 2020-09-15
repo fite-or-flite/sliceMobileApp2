@@ -11,9 +11,19 @@
     >
 
     <ImageView
+        android:id="@+id/toolbarSliceLogo"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:src="@drawable/slice_logo_small"
+        android:layout_marginStart="10dp"
         />
 
+    <ImageView
+        android:id="@+id/toolbarShoppingCartIcon"
+        android:src="@drawable/ic_baseline_shopping_cart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="150dp"
+        />
 </androidx.appcompat.widget.Toolbar>
