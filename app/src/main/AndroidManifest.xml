@@ -9,31 +9,21 @@
         android:roundIcon="@mipmap/slice_swb_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShoppingCart"></activity>
-        <activity
-            android:name=".CategoryDetails"
-            android:label="@string/title_activity_pizza"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".add_to_firebase"
-            android:label="addToFirebase"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".ItemDetails"
-            android:label="itemDetails"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
 
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ShoppingCart" />
+        <activity android:name=".CategoryDetails" />
+        <activity android:name=".add_to_firebase" />
+        <activity android:name=".ItemDetails" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".JoinActivity" />
     </application>
 
 </manifest>

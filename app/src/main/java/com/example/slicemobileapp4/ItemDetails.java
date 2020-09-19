@@ -58,14 +58,14 @@ public class ItemDetails extends AppCompatActivity {
                 if (dataSnapshot.child("smallPrice").getValue().toString().equals("")) {
                     itemSmallPrice.setVisibility(View.INVISIBLE);
                 } else {
-                    itemSmallPrice.setText("Small: " + dataSnapshot.child("smallPrice").getValue().toString());
+                    itemSmallPrice.setText("Small: $" + dataSnapshot.child("smallPrice").getValue().toString());
                 }
                 if (dataSnapshot.child("mediumPrice").getValue().toString().equals("")) {
                     itemMediumPrice.setVisibility(View.INVISIBLE);
                 } else {
-                    itemMediumPrice.setText("Medium: " + dataSnapshot.child("mediumPrice").getValue().toString());
+                    itemMediumPrice.setText("Medium: $" + dataSnapshot.child("mediumPrice").getValue().toString());
                 }
-                itemLargePrice.setText("Large: " + dataSnapshot.child("largePrice").getValue().toString());
+                itemLargePrice.setText("Large: $" + dataSnapshot.child("largePrice").getValue().toString());
             }
 
             @Override

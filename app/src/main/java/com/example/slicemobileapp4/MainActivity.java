@@ -1,107 +1,124 @@
 package com.example.slicemobileapp4;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+
+import com.example.slicemobileapp4.Prevalent.Prevalent;
+import com.example.slicemobileapp4.models.UserModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button addToFirebaseButton, pizzaButton, calzoneButton, pastaButton, saladButton, sideButton, sweetButton;
+    Button mainJoinButton, mainLoginButton;
+    ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
-        pizzaButton = findViewById(R.id.pizzaButton);
-        calzoneButton = findViewById(R.id.calzoneButton);
-        pastaButton = findViewById(R.id.pastaButton);
-        saladButton = findViewById(R.id.saladButton);
-        sideButton = findViewById(R.id.sideButton);
-        sweetButton = findViewById(R.id.sweetButton);
+        setupButtons();
+        loadingBar = new ProgressDialog(this);
 
-        addToFirebaseButton.setOnClickListener(new View.OnClickListener() {
+        //check if rememberMe previously clicked
+//        Paper.init(this);
+//
+//        String userEmail = "";
+//        String userPassword = "";
+//          //trying to make sure not null
+//        if (Paper.book().read(Prevalent.userEmailKey) != null) {
+//            userEmail = Paper.book().read(Prevalent.userEmailKey);
+//        }
+//        if (Paper.book().read(Prevalent.userPasswordKey) != null) {
+//            userPassword = Paper.book().read(Prevalent.userPasswordKey);
+//        }
+//        if (!userEmail.equals("") && !userPassword.equals("")) {
+//            if (!TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty(userPassword)) {
+//
+//                allowAccess(userEmail, userPassword);
+//
+//                if (TextUtils.isEmpty(userEmail)) {
+//                    Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
+//                } else if (TextUtils.isEmpty(userPassword)) {
+//                    Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    loadingBar.setTitle("Welcome back.");
+//                    loadingBar.setCanceledOnTouchOutside(false);
+//                    loadingBar.show();
+//                }
+//            }
+//        }
+    }
+
+    private void allowAccess(final String userEmailKey, final String userPasswordKey) {
+
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), add_to_firebase.class);
-                startActivity(intent);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("Users").child(userEmailKey).exists()) {
+                    UserModel userData = dataSnapshot.child("Users").child(userEmailKey).getValue(UserModel.class);
+                    if (userData.getEmail().equals(userEmailKey)) {
+                        if (userData.getPassword().equals(userPasswordKey)) {
+                            Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "User email does not exist. Please register.", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+                    Intent intent = new Intent(MainActivity.this, JoinActivity.class);
+                    startActivity(intent);
+                }
             }
-        });
 
-        pizzaButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Pizza";
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
-        });
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        calzoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Calzone";
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
-        });
-
-        saladButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Salad";
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
-        });
-
-        pastaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Pasta";
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
-        });
-
-        sideButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Side";
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
-        });
-
-        sweetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), CategoryDetails.class);
-                String category = "Sweet";
-                intent.putExtra("category", category);
-                startActivity(intent);
             }
         });
 
     }
 
+    public void setupButtons() {
 
+        mainJoinButton = findViewById(R.id.main_join_button);
+        mainLoginButton = findViewById(R.id.main_login_button);
+
+        mainLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mainJoinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, JoinActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
-
-
-

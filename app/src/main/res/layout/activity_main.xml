@@ -1,125 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
-    <include layout="@layout/toolbar"/>
-
-    <Button
-        android:id="@+id/pizzaButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Pizza"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/main_Logo"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/slice_logo_small"
         app:layout_constraintTop_toTopOf="parent"
-        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
     <Button
-        android:id="@+id/calzoneButton"
+        android:id="@+id/main_join_button"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Calzones/Stromboli"
-        android:textSize="24sp"
+        android:text="Join Now"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pizzaButton"
-        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintTop_toBottomOf="@id/main_Logo"
         />
 
     <Button
-        android:id="@+id/pastaButton"
+        android:id="@+id/main_login_button"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Pasta"
-        android:textSize="24sp"
+        android:text="Already have account? Login"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calzoneButton"
-        style="?android:attr/borderlessButtonStyle"
-        />
-
-    <Button
-        android:id="@+id/saladButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Salads"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pastaButton"
-        style="?android:attr/borderlessButtonStyle"
-        />
-
-    <Button
-        android:id="@+id/sideButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Sides"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/saladButton"
-        style="?android:attr/borderlessButtonStyle"
-        />
-
-    <Button
-        android:id="@+id/sweetButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="Sweets"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sideButton"
-        style="?android:attr/borderlessButtonStyle"
-        />
-
-    <Button
-        android:id="@+id/addItemsToFirebase"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginBottom="15dp"
-        android:text="add item to firebase"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sweetButton"
-        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintTop_toBottomOf="@id/main_join_button"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
