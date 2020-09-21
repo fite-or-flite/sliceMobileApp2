@@ -26,7 +26,7 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
 
     Button loginButton;
-    EditText loginEmailText, loginPasswordText;
+    EditText loginPhoneText, loginPasswordText;
     ProgressDialog loadingBar;
     CheckBox rememberMe;
 
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-      //  Paper.init(this);
+        Paper.init(this);
 
         setUpButtons();
 
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setUpButtons() {
         loginButton = findViewById(R.id.login_button);
-        loginEmailText = findViewById(R.id.login_email_text);
+        loginPhoneText = findViewById(R.id.login_phone_text);
         loginPasswordText = findViewById(R.id.login_password_text);
         loadingBar = new ProgressDialog(this);
         rememberMe = findViewById(R.id.remember_me_checkbox);
@@ -56,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void LoginUser() {
-        String email = loginEmailText.getText().toString();
+        String phone = loginPhoneText.getText().toString();
         String password = loginPasswordText.getText().toString();
 
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(phone)) {
             Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
@@ -69,27 +69,30 @@ public class LoginActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            AllowAccessToAccount(email, password);
+            AllowAccessToAccount(phone, password);
         }
 
     }
 
-    private void AllowAccessToAccount(final String email, final String password) {
-//
-//        if (rememberMe.isChecked()) {
-//            Paper.book().write(Prevalent.userEmailKey, email);
-//            Paper.book().write(Prevalent.userPasswordKey, password);
-//        }
-        // else destroy()?
+    private void AllowAccessToAccount(final String phone, final String password) {
 
-        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        if (rememberMe.isChecked()) {
+            Paper.book().write(Prevalent.userPhoneKey, phone);
+            Paper.book().write(Prevalent.userPasswordKey, password);
+        }
+        // else destroy()?
+        else {
+            Paper.book().destroy();
+        }
+
+        final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(email).exists()) {
-                    UserModel userData = dataSnapshot.child(email).getValue(UserModel.class);
-                    if (userData.getEmail().equals(email)) {
+                if (dataSnapshot.child("Users").child(phone).exists()) { //user's phone is title for model
+                    UserModel userData = dataSnapshot.child("Users").child(phone).getValue(UserModel.class);
+                    if (userData.getPhone().equals(phone)) {
                         if (userData.getPassword().equals(password)) {
                             Toast.makeText(LoginActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
@@ -101,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, "User email does not exist. Please register.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "User account does not exist. Please register.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
                     startActivity(intent);

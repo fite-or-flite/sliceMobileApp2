@@ -35,45 +35,42 @@ public class MainActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
         //check if rememberMe previously clicked
-//        Paper.init(this);
-//
-//        String userEmail = "";
-//        String userPassword = "";
-//          //trying to make sure not null
-//        if (Paper.book().read(Prevalent.userEmailKey) != null) {
-//            userEmail = Paper.book().read(Prevalent.userEmailKey);
-//        }
-//        if (Paper.book().read(Prevalent.userPasswordKey) != null) {
-//            userPassword = Paper.book().read(Prevalent.userPasswordKey);
-//        }
-//        if (!userEmail.equals("") && !userPassword.equals("")) {
-//            if (!TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty(userPassword)) {
-//
-//                allowAccess(userEmail, userPassword);
-//
-//                if (TextUtils.isEmpty(userEmail)) {
-//                    Toast.makeText(this, "Please enter your email.", Toast.LENGTH_SHORT).show();
-//                } else if (TextUtils.isEmpty(userPassword)) {
-//                    Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    loadingBar.setTitle("Welcome back.");
-//                    loadingBar.setCanceledOnTouchOutside(false);
-//                    loadingBar.show();
-//                }
-//            }
-//        }
+        Paper.init(this);
+
+        String userPhone = "";
+        String userPassword = "";
+        userPhone = Paper.book().read(Prevalent.userPhoneKey);
+        userPassword = Paper.book().read(Prevalent.userPasswordKey);
+
+        //make sure not null
+        if (!userPhone.equals("") && !userPassword.equals("")) {
+            if (!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPassword)) {
+
+                allowAccess(userPhone, userPassword);
+
+                if (TextUtils.isEmpty(userPhone)) {
+                    Toast.makeText(this, "Please enter your phone number.", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(userPassword)) {
+                    Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadingBar.setTitle("Welcome back.");
+                    loadingBar.setCanceledOnTouchOutside(false);
+                    loadingBar.show();
+                }
+            }
+        }
     }
 
-    private void allowAccess(final String userEmailKey, final String userPasswordKey) {
+    private void allowAccess(final String userPhoneKey, final String userPasswordKey) {
 
         final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("Users").child(userEmailKey).exists()) {
-                    UserModel userData = dataSnapshot.child("Users").child(userEmailKey).getValue(UserModel.class);
-                    if (userData.getEmail().equals(userEmailKey)) {
+                if (dataSnapshot.child("Users").child(userPhoneKey).exists()) {
+                    UserModel userData = dataSnapshot.child("Users").child(userPhoneKey).getValue(UserModel.class);
+                    if (userData.getPhone().equals(userPhoneKey)) {
                         if (userData.getPassword().equals(userPasswordKey)) {
                             Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
@@ -85,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(MainActivity.this, "User email does not exist. Please register.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "User account does not exist. Please register.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Intent intent = new Intent(MainActivity.this, JoinActivity.class);
                     startActivity(intent);

@@ -93,11 +93,11 @@ public class JoinActivity extends AppCompatActivity {
     }
 
     private void validateEmail(final String email, final String firstName, final String lastName, final String phone, final String password) {
-        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!(dataSnapshot.child(email).exists())) {
+                if (!(dataSnapshot.child("Users").child(phone).exists())) {
                     HashMap<String, Object> userDataMap = new HashMap<>();
                     userDataMap.put("Email", email);
                     userDataMap.put("FirstName", firstName);
@@ -105,7 +105,7 @@ public class JoinActivity extends AppCompatActivity {
                     userDataMap.put("Phone", phone);
                     userDataMap.put("Password", password);
 
-                    databaseReference.child(email).updateChildren(userDataMap)
+                    databaseReference.child("Users").child(phone).updateChildren(userDataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -120,7 +120,7 @@ public class JoinActivity extends AppCompatActivity {
                                 }
                             });
                 } else {
-                    Toast.makeText(JoinActivity.this, "This email is already registered.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JoinActivity.this, "This phone number is already registered.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Intent intent = new Intent(JoinActivity.this, MainActivity.class);
                     startActivity(intent);

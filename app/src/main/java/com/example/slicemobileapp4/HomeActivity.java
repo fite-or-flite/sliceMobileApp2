@@ -9,20 +9,21 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button addToFirebaseButton, pizzaButton, calzoneButton, pastaButton, saladButton, sideButton, sweetButton;
+    Button addToFirebaseButton, pizzaButton, calzoneButton, pastaButton, saladButton, sideButton, sweetButton, logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
         pizzaButton = findViewById(R.id.pizzaButton);
         calzoneButton = findViewById(R.id.calzoneButton);
         pastaButton = findViewById(R.id.pastaButton);
         saladButton = findViewById(R.id.saladButton);
         sideButton = findViewById(R.id.sideButton);
         sweetButton = findViewById(R.id.sweetButton);
+        addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
+        logoutButton = findViewById(R.id.logoutButton);
 
         addToFirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +93,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              //  Paper.book().destroy();
+
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 
