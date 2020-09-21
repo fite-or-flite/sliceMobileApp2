@@ -43,19 +43,21 @@ public class MainActivity extends AppCompatActivity {
         userPassword = Paper.book().read(Prevalent.userPasswordKey);
 
         //make sure not null
-        if (!userPhone.equals("") && !userPassword.equals("")) {
-            if (!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPassword)) {
+        if (userPhone != null && userPassword != null) { // crashes without this line
+            if(!userPhone.equals("") && !userPassword.equals("")) {
+                if (!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPassword)) {
 
-                allowAccess(userPhone, userPassword);
+                    allowAccess(userPhone, userPassword);
 
-                if (TextUtils.isEmpty(userPhone)) {
-                    Toast.makeText(this, "Please enter your phone number.", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(userPassword)) {
-                    Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
-                } else {
-                    loadingBar.setTitle("Welcome back.");
-                    loadingBar.setCanceledOnTouchOutside(false);
-                    loadingBar.show();
+                    if (TextUtils.isEmpty(userPhone)) {
+                        Toast.makeText(this, "Please enter your phone number.", Toast.LENGTH_SHORT).show();
+                    } else if (TextUtils.isEmpty(userPassword)) {
+                        Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        loadingBar.setTitle("Welcome back.");
+                        loadingBar.setCanceledOnTouchOutside(false);
+                        loadingBar.show();
+                    }
                 }
             }
         }
