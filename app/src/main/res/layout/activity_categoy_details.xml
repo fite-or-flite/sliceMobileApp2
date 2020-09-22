@@ -7,14 +7,15 @@
     tools:context=".CategoryDetails"
     >
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar"
+        android:id="@+id/category_details_toolbar"/>
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_recycler_frame"
-    android:layout_marginTop="100dp"
+    android:id="@+id/category_details_recyclerview"
+    android:layout_below="@id/category_details_toolbar"
     >
 </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

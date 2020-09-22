@@ -77,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     private void AllowAccessToAccount(final String phone, final String password) {
 
         if (rememberMe.isChecked()) {
+            //Paper.book().write(Prevalent.currentUser, phone);
             Paper.book().write(Prevalent.userPhoneKey, phone);
             Paper.book().write(Prevalent.userPasswordKey, password);
         }
@@ -97,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            Prevalent.currentUser = userData;
                             startActivity(intent);
                         } else {
                             Toast.makeText(LoginActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();

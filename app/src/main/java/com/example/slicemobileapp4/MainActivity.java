@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Logged in successfully.", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            Prevalent.currentUser = userData;
                             startActivity(intent);
                         } else {
                             Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
@@ -119,5 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void shoppingCartButtonClick() {
+
     }
 }

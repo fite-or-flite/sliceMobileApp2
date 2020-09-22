@@ -36,7 +36,7 @@ public class CategoryDetails extends AppCompatActivity {
         final String intentCategory = intent.getStringExtra("category");
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child(intentCategory);
-        recyclerView = findViewById(R.id.item_recycler_frame);
+        recyclerView = findViewById(R.id.category_details_recyclerview);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(layoutManager);

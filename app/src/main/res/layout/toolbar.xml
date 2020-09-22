@@ -15,16 +15,16 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:src="@drawable/slice_logo_small"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="0dp"
         />
 
     <ImageView
         android:id="@+id/toolbarShoppingCartIcon"
-        android:src="@drawable/ic_baseline_shopping_cart"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="0dp"
         android:layout_marginStart="175dp"
+        android:layout_marginEnd="0dp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_shopping_cart" />
 
-        />
 </androidx.appcompat.widget.Toolbar>
