@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "205729376124-kp94gbib11jilos9k7mrp26bihgcirhe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.slicemobileapp4",
+            "certificate_hash": "5d7fc129825befda9487359bfad10c0cddac66cb"
+          }
+        },
+        {
           "client_id": "205729376124-hb8q1mrj11ttg90l7u1h5tc3htoec5de.apps.googleusercontent.com",
           "client_type": 3
         }

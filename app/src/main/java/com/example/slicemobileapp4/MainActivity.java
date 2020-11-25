@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.slicemobileapp4.Prevalent.Prevalent;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button mainJoinButton, mainLoginButton;
     ProgressDialog loadingBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
-    public void shoppingCartButtonClick() {
 
     }
+
+
 }

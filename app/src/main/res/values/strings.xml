@@ -108,6 +108,9 @@
     <string name="brownie_description">Our delicious and chewy brownie.</string>
     <string name="brookie">Brookie</string>
     <string name="brookie_description">A chocolate chip cookie baked in a brownie.</string>
+    <string name="shopping_cart_product_name">Name</string>
+    <string name="shopping_cart_product_price">Price</string>
+    <string name="shopping_cart_product_description">Description</string>
 
 
 </resources>

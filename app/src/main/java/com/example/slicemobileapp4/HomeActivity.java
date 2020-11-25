@@ -1,9 +1,12 @@
 package com.example.slicemobileapp4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,7 +17,7 @@ import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button addToFirebaseButton, pizzaButton, calzoneButton, pastaButton, saladButton, sideButton, sweetButton, logoutButton;
+    Button addToFirebaseButton, pizzaButton, calzoneButton, pastaButton, saladButton, sideButton, sweetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,12 @@ public class HomeActivity extends AppCompatActivity {
         String currentUserID = Prevalent.currentUser.getPhone();
         Toast.makeText(HomeActivity.this, "current user is " + currentUserID, Toast.LENGTH_SHORT).show();
 
+        //setup toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" ");
+
+        //setup buttons
         pizzaButton = findViewById(R.id.pizzaButton);
         calzoneButton = findViewById(R.id.calzoneButton);
         pastaButton = findViewById(R.id.pastaButton);
@@ -31,7 +40,6 @@ public class HomeActivity extends AppCompatActivity {
         sideButton = findViewById(R.id.sideButton);
         sweetButton = findViewById(R.id.sweetButton);
         addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
-        logoutButton = findViewById(R.id.logoutButton);
 
         addToFirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,19 +109,34 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.shopping_cart_button:
+                Intent intent2 = new Intent(getApplicationContext(), ShoppingCart.class);
+                startActivity(intent2);
+                return true;
+            case R.id.logout_button:
                 Paper.book().destroy();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
-            }
-        });
+                return true;
+            case R.id.settings_button:
+                Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+        return true;
     }
-
-
 }
 
 
