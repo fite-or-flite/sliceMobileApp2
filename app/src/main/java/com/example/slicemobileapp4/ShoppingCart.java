@@ -79,18 +79,19 @@ public class ShoppingCart extends AppCompatActivity {
 
                 final String itemModelName = itemModel.getName();
                 String itemModelPrice = "$" + itemModel.getPrice();
+                Float addToTotal = Float.parseFloat(itemModel.getPrice());
 
                 shoppingCartProductView.shoppingCartProductName.setText(itemModelName);
                 shoppingCartProductView.shoppingCartProductPrice.setText(itemModelPrice);
 
                 //this totes doesn't work
-//                runningTotal = runningTotal + Float.parseFloat(itemModel.getPrice());
+//                runningTotal = runningTotal + addToTotal ;
 //                totalPrice.setText(String.valueOf(runningTotal));
 
             }
 
-            @NonNull
             @Override
+            @NonNull
             public ShoppingCartProductView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater
                         .from(parent.getContext())
@@ -113,11 +114,6 @@ public class ShoppingCart extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//          doesn't work yet?
-//            case R.id.logo:
-//                Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
-//                startActivity(intent3);
-//                return true;
             case R.id.shopping_cart_button:
                 Intent intent2 = new Intent(getApplicationContext(), ShoppingCart.class);
                 startActivity(intent2);
