@@ -4,11 +4,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.slicemobileapp4.R;
+import com.example.slicemobileapp4.ShoppingCart;
 
 public class ShoppingCartProductView extends RecyclerView.ViewHolder {
 
@@ -20,6 +22,5 @@ public class ShoppingCartProductView extends RecyclerView.ViewHolder {
         shoppingCartProductName = (TextView) itemView.findViewById(R.id.shopping_cart_product_name);
         shoppingCartProductPrice = (TextView) itemView.findViewById(R.id.shopping_cart_product_price);
         shoppingCartDeleteProductButton = (ImageView) itemView.findViewById(R.id.shopping_cart_delete_button);
-
     }
 }

@@ -1,4 +1,6 @@
 package com.example.slicemobileapp4;
+//totaling the items isn't working
+//delete button for item doesn't work (shoppingCartDeleteListener & -Adapter)
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +25,7 @@ import com.example.slicemobileapp4.models.ItemModel;
 import com.example.slicemobileapp4.models.ShoppingCartModel;
 import com.example.slicemobileapp4.productViews.CategoryProductView;
 import com.example.slicemobileapp4.productViews.ShoppingCartProductView;
+import com.example.slicemobileapp4.productViews.shoppingCartDeleteListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -98,10 +102,13 @@ public class ShoppingCart extends AppCompatActivity {
                         .inflate(R.layout.shopping_cart_view_layout, parent, false);
                 return new ShoppingCartProductView(view);
             }
+
         };
+
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
     }
 
 

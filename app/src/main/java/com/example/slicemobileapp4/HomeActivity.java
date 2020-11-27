@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        String currentUserID = Prevalent.currentUser.getPhone();
+        String currentUserID = Prevalent.currentUser.getFirstName();
         Toast.makeText(HomeActivity.this, "current user is " + currentUserID, Toast.LENGTH_SHORT).show();
 
         //setup toolbar
