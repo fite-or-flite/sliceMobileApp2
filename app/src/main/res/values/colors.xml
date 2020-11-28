@@ -3,8 +3,8 @@
     <color name="colorPrimary">#cdb083</color>
     <color name="colorPrimaryDark">#c79a54</color>
     <color name="colorAccent">#a4f5db</color>
-    <color name="colorRadioButtonSelected">#ad052c</color>
-
+    <color name="colorRadioButtonSelected">#000000</color>
+    <color name="specialInstructionsBox">#EDD4AC</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>

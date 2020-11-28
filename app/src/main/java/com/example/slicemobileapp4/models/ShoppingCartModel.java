@@ -1,15 +1,15 @@
 package com.example.slicemobileapp4.models;
 
 public class ShoppingCartModel {
-    String Name, Price, Description;
+    String Name, Price, Instructions;
 
     public ShoppingCartModel() {
     }
 
-    public ShoppingCartModel(String name, String price, String description) {
+    public ShoppingCartModel(String name, String price, String instructions) {
         Name = name;
         Price = price;
-        Description = description;
+        Instructions = instructions;
     }
 
     public String getName() {
@@ -28,7 +28,7 @@ public class ShoppingCartModel {
         Price = price;
     }
 
-    public  String getDescription() { return Description; }
+    public  String getInstructions() { return Instructions; }
 
-    public void setDescription(String description) { Description = description; }
+    public void setInstructions(String instructions) { Instructions = instructions; }
 }

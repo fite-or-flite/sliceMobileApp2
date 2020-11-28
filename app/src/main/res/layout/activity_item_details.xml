@@ -52,7 +52,8 @@
             android:text="Small Price"
             android:visibility="visible"
             android:textColor="@android:color/black"
-            android:buttonTint="@color/colorRadioButtonSelected"            />
+            android:buttonTint="@color/colorRadioButtonSelected"
+            />
 
         <RadioButton
             android:id="@+id/item_view_medium_price_radio_button"
@@ -61,7 +62,7 @@
             android:text="Medium Price"
             android:visibility="visible"
             android:textColor="@android:color/black"
-            android:buttonTint="@color/colorRadioButtonSelected"            />
+            android:buttonTint="@color/colorRadioButtonSelected"
         />
 
         <RadioButton
@@ -71,7 +72,7 @@
             android:text="Large Price"
             android:visibility="visible"
             android:textColor="@android:color/black"
-            android:buttonTint="@color/colorRadioButtonSelected"            />
+            android:buttonTint="@color/colorRadioButtonSelected"
         />
 
     </RadioGroup>
@@ -85,7 +86,7 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:hint="Special instructions, allergies, or dietary restrictions?"
-        android:background="@android:color/darker_gray"
+        android:background="@color/specialInstructionsBox"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/black"
         />

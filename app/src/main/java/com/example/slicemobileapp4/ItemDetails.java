@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import io.paperdb.Paper;
 public class ItemDetails extends AppCompatActivity {
 
     TextView itemName, itemDescription;
+    EditText specialInstructions;
     Button addItemToCart;
     RadioButton itemSmallPrice, itemMediumPrice, itemLargePrice;
    // DatabaseReference databaseReference;
@@ -98,6 +100,7 @@ public class ItemDetails extends AppCompatActivity {
         itemMediumPrice = findViewById(R.id.item_view_medium_price_radio_button);
         itemLargePrice = findViewById(R.id.item_view_large_price_radio_button);
         addItemToCart = findViewById(R.id.add_item_to_order_button);
+        specialInstructions = findViewById(R.id.item_view_special_instructions);
 
         addItemToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +139,7 @@ public class ItemDetails extends AppCompatActivity {
                     HashMap<String, Object> itemDataMap = new HashMap<>();
                     itemDataMap.put("Name", itemNameForCart);
                     itemDataMap.put("Price", itemPriceForCart);
+                    itemDataMap.put("Instructions", specialInstructions.getText().toString());
 
                     currentUserReference.child("CurrentOrder").child(intentTitle).updateChildren(itemDataMap)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

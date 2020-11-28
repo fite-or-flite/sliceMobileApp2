@@ -1,6 +1,5 @@
 package com.example.slicemobileapp4;
 //totaling the items isn't working
-//delete button for item doesn't work (shoppingCartDeleteListener & -Adapter)
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,23 +14,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.slicemobileapp4.Prevalent.Prevalent;
-import com.example.slicemobileapp4.models.ItemModel;
 import com.example.slicemobileapp4.models.ShoppingCartModel;
-import com.example.slicemobileapp4.productViews.CategoryProductView;
 import com.example.slicemobileapp4.productViews.ShoppingCartProductView;
-import com.example.slicemobileapp4.productViews.shoppingCartDeleteListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import io.paperdb.Paper;
 
@@ -51,7 +44,7 @@ public class ShoppingCart extends AppCompatActivity {
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       // getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setTitle(" ");
 
         //setup button
         checkout_button = findViewById(R.id.shopping_cart_checkout_button);
@@ -79,14 +72,26 @@ public class ShoppingCart extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<ShoppingCartModel, ShoppingCartProductView> adapter = new FirebaseRecyclerAdapter<ShoppingCartModel, ShoppingCartProductView>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ShoppingCartProductView shoppingCartProductView, int i, @NonNull ShoppingCartModel itemModel) {
+            protected void onBindViewHolder(@NonNull final ShoppingCartProductView shoppingCartProductView, int i, @NonNull ShoppingCartModel itemModel) {
 
                 final String itemModelName = itemModel.getName();
                 String itemModelPrice = "$" + itemModel.getPrice();
+                String itemModelInstructions = itemModel.getInstructions();
+
                 Float addToTotal = Float.parseFloat(itemModel.getPrice());
 
                 shoppingCartProductView.shoppingCartProductName.setText(itemModelName);
                 shoppingCartProductView.shoppingCartProductPrice.setText(itemModelPrice);
+                shoppingCartProductView.shoppingCartSpecialInstructions.setText(itemModelInstructions);
+
+                shoppingCartProductView.shoppingCartDeleteProductButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String childname = itemModelName.replace(" ", "_").toLowerCase();
+                        databaseReference.child(childname).removeValue();
+                        Toast.makeText(getApplicationContext(), itemModelName + " deleted", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 //this totes doesn't work
 //                runningTotal = runningTotal + addToTotal ;
