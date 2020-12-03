@@ -1,5 +1,6 @@
 package com.example.slicemobileapp4;
-//totaling the items isn't working
+// total price doesn't update on deletebutton onclick
+//may be bc its in onbind, which only gets called once?
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +34,9 @@ public class ShoppingCart extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     Button checkout_button;
-    Float runningTotal;
+    double runningTotal = 0.00;
+    double deletePrice = 0;
+
     TextView totalPrice;
 
     @Override
@@ -45,6 +48,8 @@ public class ShoppingCart extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //setup button
         checkout_button = findViewById(R.id.shopping_cart_checkout_button);
@@ -72,13 +77,13 @@ public class ShoppingCart extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<ShoppingCartModel, ShoppingCartProductView> adapter = new FirebaseRecyclerAdapter<ShoppingCartModel, ShoppingCartProductView>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull final ShoppingCartProductView shoppingCartProductView, int i, @NonNull ShoppingCartModel itemModel) {
+            protected void onBindViewHolder(@NonNull final ShoppingCartProductView shoppingCartProductView, int i, @NonNull final ShoppingCartModel itemModel) {
 
                 final String itemModelName = itemModel.getName();
                 String itemModelPrice = "$" + itemModel.getPrice();
                 String itemModelInstructions = itemModel.getInstructions();
 
-                Float addToTotal = Float.parseFloat(itemModel.getPrice());
+                final double addToTotal = Double.parseDouble(itemModel.getPrice());
 
                 shoppingCartProductView.shoppingCartProductName.setText(itemModelName);
                 shoppingCartProductView.shoppingCartProductPrice.setText(itemModelPrice);
@@ -88,14 +93,19 @@ public class ShoppingCart extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String childname = itemModelName.replace(" ", "_").toLowerCase();
+                        //double deletePrice = Double.parseDouble(databaseReference.child(childname).child("Price").toString());
+                        deletePrice = Double.parseDouble(itemModel.getPrice().toString());
+                        runningTotal = runningTotal - deletePrice;
+                        totalPrice.setText(String.format("%.2f", runningTotal));
                         databaseReference.child(childname).removeValue();
                         Toast.makeText(getApplicationContext(), itemModelName + " deleted", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
-                //this totes doesn't work
-//                runningTotal = runningTotal + addToTotal ;
-//                totalPrice.setText(String.valueOf(runningTotal));
+                //add item price to total price
+                runningTotal = runningTotal + addToTotal;
+                totalPrice.setText(String.format("%.2f", runningTotal));
 
             }
 
@@ -110,12 +120,10 @@ public class ShoppingCart extends AppCompatActivity {
 
         };
 
-
         recyclerView.setAdapter(adapter);
         adapter.startListening();
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -139,6 +147,10 @@ public class ShoppingCart extends AppCompatActivity {
                 return true;
             case R.id.settings_button:
                 Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.home:
+                Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent3);
                 return true;
         }
         return true;

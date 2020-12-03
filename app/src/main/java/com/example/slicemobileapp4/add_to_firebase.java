@@ -29,7 +29,7 @@ public class add_to_firebase extends AppCompatActivity {
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(" ");
+        //getSupportActionBar().setTitle(" ");
 
         //setup edit texts
         newCategory = findViewById(R.id.edit_text_menu_item_category);
