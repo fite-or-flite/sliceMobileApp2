@@ -29,7 +29,9 @@ public class add_to_firebase extends AppCompatActivity {
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //setup edit texts
         newCategory = findViewById(R.id.edit_text_menu_item_category);
@@ -106,6 +108,10 @@ public class add_to_firebase extends AppCompatActivity {
                 return true;
             case R.id.settings_button:
                 Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case android.R.id.home:
+                Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent3);
                 return true;
         }
         return true;

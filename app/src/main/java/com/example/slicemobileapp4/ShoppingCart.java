@@ -37,7 +37,7 @@ public class ShoppingCart extends AppCompatActivity {
     double runningTotal = 0.00;
     double deletePrice = 0;
 
-    TextView totalPrice;
+    TextView totalPriceText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class ShoppingCart extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //setup button
+        //setup buttons
         checkout_button = findViewById(R.id.shopping_cart_checkout_button);
         checkout_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class ShoppingCart extends AppCompatActivity {
             }
         });
 
-        totalPrice = findViewById(R.id.shopping_cart_total_price_text);
+        totalPriceText = findViewById(R.id.shopping_cart_price_text);
         String currentUser = Prevalent.currentUser.getPhone();
 
         //setup fbrecyclerview to show /Users/<user>/CurrentOrder/
@@ -96,7 +96,9 @@ public class ShoppingCart extends AppCompatActivity {
                         //double deletePrice = Double.parseDouble(databaseReference.child(childname).child("Price").toString());
                         deletePrice = Double.parseDouble(itemModel.getPrice().toString());
                         runningTotal = runningTotal - deletePrice;
-                        totalPrice.setText(String.format("%.2f", runningTotal));
+                        //totalPrice.setText(String.format("%.2f", runningTotal));
+                        totalPriceText.setText("Price (before taxes) $" + String.format("%.2f", runningTotal));
+
                         databaseReference.child(childname).removeValue();
                         Toast.makeText(getApplicationContext(), itemModelName + " deleted", Toast.LENGTH_SHORT).show();
 
@@ -105,7 +107,8 @@ public class ShoppingCart extends AppCompatActivity {
 
                 //add item price to total price
                 runningTotal = runningTotal + addToTotal;
-                totalPrice.setText(String.format("%.2f", runningTotal));
+                //totalPrice.setText(String.format("%.2f", runningTotal));
+                totalPriceText.setText("Price (before taxes) $" + String.format("%.2f", runningTotal));
 
             }
 
@@ -148,7 +151,7 @@ public class ShoppingCart extends AppCompatActivity {
             case R.id.settings_button:
                 Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.home:
+            case android.R.id.home:
                 Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent3);
                 return true;

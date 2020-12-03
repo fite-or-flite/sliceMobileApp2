@@ -52,6 +52,8 @@ public class ItemDetails extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" ");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         intentCategory = intent.getStringExtra("category");
@@ -192,6 +194,10 @@ public class ItemDetails extends AppCompatActivity {
                 return true;
             case R.id.settings_button:
                 Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case android.R.id.home:
+                Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent3);
                 return true;
         }
         return true;

@@ -7,17 +7,22 @@
     android:background="@color/colorPrimary"
     tools:context=".add_to_firebase">
 
+    <include layout="@layout/toolbar"/>
+
     <EditText
         android:id="@+id/edit_text_menu_item_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Menu Item Category"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:color/white"
-        android:textColorHint="@android:color/darker_gray"
+        android:hint="Menu Item Category"
         android:textColor="@android:color/black"
-        android:layout_margin="20dp"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
         />
 
     <EditText

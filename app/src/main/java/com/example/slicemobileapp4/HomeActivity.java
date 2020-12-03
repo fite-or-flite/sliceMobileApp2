@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         String currentUserID = Prevalent.currentUser.getFirstName();
-        Toast.makeText(HomeActivity.this, "current user is " + currentUserID, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(HomeActivity.this, "current user is " + currentUserID, Toast.LENGTH_SHORT).show();
 
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -41,13 +41,17 @@ public class HomeActivity extends AppCompatActivity {
         sweetButton = findViewById(R.id.sweetButton);
         addToFirebaseButton = findViewById(R.id.addItemsToFirebase);
 
-        addToFirebaseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), add_to_firebase.class);
-                startActivity(intent);
-            }
-        });
+        //setup addToFirebaseButton if authorized
+        if (currentUserID.equals("admin")) {
+            addToFirebaseButton.setVisibility(View.VISIBLE);
+            addToFirebaseButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), add_to_firebase.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         pizzaButton.setOnClickListener(new View.OnClickListener() {
             @Override

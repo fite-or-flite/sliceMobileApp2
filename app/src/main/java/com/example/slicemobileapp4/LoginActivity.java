@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.slicemobileapp4.Prevalent.Prevalent;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button loginButton;
     EditText loginPhoneText, loginPasswordText;
+    TextView forgotPasswordText;
     ProgressDialog loadingBar;
     CheckBox rememberMe;
 
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPasswordText = findViewById(R.id.login_password_text);
         loadingBar = new ProgressDialog(this);
         rememberMe = findViewById(R.id.remember_me_checkbox);
+        forgotPasswordText = findViewById(R.id.forgot_password_text);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +56,17 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
+
+        forgotPasswordText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ForgotPassword();
+            }
+        });
+    }
+
+    private void ForgotPassword() {
+        Toast.makeText(getApplicationContext(), "This takes you to forgot password something", Toast.LENGTH_SHORT).show();
     }
 
     private void LoginUser() {
