@@ -80,7 +80,7 @@
     <EditText
         android:id="@+id/item_view_special_instructions"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_below="@id/item_view_radio_group"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
@@ -102,4 +102,14 @@
         android:textColor="@android:color/black"
         />
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gotoToppingsButton"
+        android:text="go to toppings"
+        android:layout_below="@id/add_item_to_order_button"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>

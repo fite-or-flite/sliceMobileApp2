@@ -1,16 +1,13 @@
 package com.example.slicemobileapp4;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.slicemobileapp4.Prevalent.Prevalent;
-import com.example.slicemobileapp4.models.ItemModel;
-import com.example.slicemobileapp4.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import io.paperdb.Paper;
@@ -38,7 +32,7 @@ public class ItemDetails extends AppCompatActivity {
 
     TextView itemName, itemDescription;
     EditText specialInstructions;
-    Button addItemToCart;
+    Button addItemToCartButton, gotoToppingsButton;
     RadioButton itemSmallPrice, itemMediumPrice, itemLargePrice;
    // DatabaseReference databaseReference;
     String intentTitle = "", intentCategory = "", itemDetailsName = "", itemDetailsDescription = "";
@@ -101,10 +95,19 @@ public class ItemDetails extends AppCompatActivity {
         itemSmallPrice = findViewById(R.id.item_view_small_price_radio_button);
         itemMediumPrice = findViewById(R.id.item_view_medium_price_radio_button);
         itemLargePrice = findViewById(R.id.item_view_large_price_radio_button);
-        addItemToCart = findViewById(R.id.add_item_to_order_button);
+        addItemToCartButton = findViewById(R.id.add_item_to_order_button);
         specialInstructions = findViewById(R.id.item_view_special_instructions);
+        gotoToppingsButton = findViewById(R.id.gotoToppingsButton);
 
-        addItemToCart.setOnClickListener(new View.OnClickListener() {
+        gotoToppingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent69 = new Intent(ItemDetails.this, AddToppingsActivity.class);
+                startActivity(intent69);
+            }
+        });
+
+        addItemToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //get user phone id
