@@ -24,6 +24,5 @@ public class ShoppingCartProductView extends RecyclerView.ViewHolder {
         shoppingCartProductPrice = (TextView) itemView.findViewById(R.id.shopping_cart_product_price);
         shoppingCartDeleteProductButton = (ImageButton) itemView.findViewById(R.id.shopping_cart_delete_button);
         shoppingCartSpecialInstructions = (TextView) itemView.findViewById(R.id.shopping_cart_special_instructions);
-
     }
 }

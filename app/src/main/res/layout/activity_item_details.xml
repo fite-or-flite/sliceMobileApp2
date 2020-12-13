@@ -86,30 +86,30 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:hint="Special instructions, allergies, or dietary restrictions?"
+        android:text=""
         android:background="@color/specialInstructionsBox"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/black"
         />
 
     <Button
-        android:id="@+id/add_item_to_order_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/item_view_special_instructions"
-        android:text="Add To Order"
-        android:layout_marginTop="25dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"
-        />
-
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gotoToppingsButton"
-        android:text="go to toppings"
-        android:layout_below="@id/add_item_to_order_button"
+        android:text="Add Toppings"
+        android:layout_below="@id/item_view_special_instructions"
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/add_item_to_order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gotoToppingsButton"
+        android:text="Add To Order"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"
         />
 </RelativeLayout>

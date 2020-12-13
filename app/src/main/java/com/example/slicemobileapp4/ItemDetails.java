@@ -1,5 +1,6 @@
 package com.example.slicemobileapp4;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,13 +35,15 @@ public class ItemDetails extends AppCompatActivity {
     EditText specialInstructions;
     Button addItemToCartButton, gotoToppingsButton;
     RadioButton itemSmallPrice, itemMediumPrice, itemLargePrice;
-   // DatabaseReference databaseReference;
-    String intentTitle = "", intentCategory = "", itemDetailsName = "", itemDetailsDescription = "";
+    String intentTitle = "", intentCategory = "", itemDetailsName = "", itemDetailsDescription = "", intentSpecialInstructions = "";
+    String intentToppingPrice = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
+
+        setUpButtons();
 
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,11 +52,28 @@ public class ItemDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //get passed values from intent
         Intent intent = getIntent();
         intentCategory = intent.getStringExtra("category");
         intentTitle = intent.getStringExtra("productTitle");
+        intentSpecialInstructions = intent.getStringExtra("specialInstructions");
+        intentToppingPrice = intent.getStringExtra("extraToppingsPrice");
 
-        setUpButtons();
+        //check intent for null
+        if (intentCategory == null || intentCategory == "") {
+            intentCategory = "Pizza";
+        }
+        if (intentTitle == null || intentTitle == "") {
+            intentTitle = "white_pizza";
+        }
+        if (intentSpecialInstructions != null && !intentSpecialInstructions.equals("")) {
+            specialInstructions.setText(intentSpecialInstructions);
+        }
+        if (intentToppingPrice == null) {
+            intentToppingPrice = "";
+            Toast.makeText(getApplicationContext(), "intent topping price was null", Toast.LENGTH_SHORT).show();
+        }
+
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child(intentCategory)
@@ -103,6 +123,8 @@ public class ItemDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent69 = new Intent(ItemDetails.this, AddToppingsActivity.class);
+                intent69.putExtra("category", intentCategory);
+                intent69.putExtra("productTitle", intentTitle);
                 startActivity(intent69);
             }
         });
@@ -113,10 +135,6 @@ public class ItemDetails extends AppCompatActivity {
 //get user phone id
             String currentUser = Prevalent.currentUser.getPhone(); // string to store current user's phone id
             final String itemNameForCart = itemName.getText().toString();
-
-            Intent intent = getIntent();
-            intentCategory = intent.getStringExtra("category");
-            intentTitle = intent.getStringExtra("productTitle");
 
 //add product to user's fb db
             final DatabaseReference currentUserReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser);
@@ -138,9 +156,16 @@ public class ItemDetails extends AppCompatActivity {
                         itemPrice = itemLargePrice.getText().toString()
                                 .replaceAll("[^\\\\.0123456789]", "");
                     }
+                    //add toppings $$ if needed
+                    if (intentToppingPrice != null && !intentToppingPrice.equals("")) {
+                        double numericItemPrice = Double.parseDouble(itemPrice);
+                        double numbericToppingPrice = Double.parseDouble(intentToppingPrice);
+                        double totalPrice = numbericToppingPrice + numericItemPrice;
+                        itemPrice = String.valueOf(totalPrice);
+                    }
+
 
                     final String itemPriceForCart = itemPrice;
-
                     HashMap<String, Object> itemDataMap = new HashMap<>();
                     itemDataMap.put("Name", itemNameForCart);
                     itemDataMap.put("Price", itemPriceForCart);

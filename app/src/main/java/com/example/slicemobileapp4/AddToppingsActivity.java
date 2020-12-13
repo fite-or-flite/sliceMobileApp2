@@ -14,12 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.slicemobileapp4.models.ShoppingCartModel;
 import com.example.slicemobileapp4.models.ToppingsModel;
-import com.example.slicemobileapp4.productViews.ShoppingCartProductView;
 import com.example.slicemobileapp4.productViews.ToppingsProductView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -36,11 +36,18 @@ public class AddToppingsActivity extends AppCompatActivity {
     Button addToppingsButton;
     double toppingsTotal = 0.00;
     TextView addToppingsTotal;
+    CheckBox addToppingsCheckBox;
+    String addToppingsList = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_toppings);
+
+        //pass values via intent
+        Intent intent = getIntent();
+        final String intentCategory = intent.getStringExtra("category");
+        final String intentTitle = intent.getStringExtra("productTitle");
 
         //setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -50,7 +57,7 @@ public class AddToppingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //setup buttons, etc
-        addToppingsButton = findViewById(R.id.add_toppings_button);
+        addToppingsButton = findViewById(R.id.add_toppings_final_button);
         addToppingsTotal = findViewById(R.id.add_toppings_total_text);
 
         //setup fbrecyclerview for /toppings
@@ -67,17 +74,44 @@ public class AddToppingsActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<ToppingsModel, ToppingsProductView> adapter = new FirebaseRecyclerAdapter<ToppingsModel, ToppingsProductView>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ToppingsProductView toppingsProductView, int i, @NonNull ToppingsModel toppingsModel) {
+            protected void onBindViewHolder(@NonNull final ToppingsProductView toppingsProductView, int i, @NonNull ToppingsModel toppingsModel) {
                 String toppingName = toppingsModel.getName();
                 Long toppingCostText = toppingsModel.getCost();
-                Double toppingCost = toppingCostText.doubleValue();
+                final Double toppingCost = toppingCostText.doubleValue();
 
-                toppingsProductView.toppingNameRadioButton.setText(toppingName);
+                //set up topping check boxes
+                toppingsProductView.toppingNameCheckBox.setText(toppingName);
+                CompoundButton.OnCheckedChangeListener rbClick = new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b == true) {
+                            toppingsTotal = toppingsTotal + toppingCost;
+                            addToppingsTotal.setText("Toppings Total: $" + String.format("%.2f", toppingsTotal));
+                            addToppingsList = addToppingsList + compoundButton.getText().toString() + " ";
+                        }
+                        else if (b == false) {
+                            toppingsTotal = toppingsTotal - toppingCost;
+                            addToppingsTotal.setText("Toppings Total: $" + String.format("%.2f", toppingsTotal));
+                            addToppingsList.replaceAll(compoundButton.getText().toString(), "");
+                        }
+                    }
+                };
+                toppingsProductView.toppingNameCheckBox.setOnCheckedChangeListener(rbClick);
 
-                if (toppingsProductView.toppingNameRadioButton.isChecked()) {
-                    toppingsTotal = toppingsTotal + toppingCost;
-                    addToppingsTotal.setText("Toppings Total: $" + String.format("%.2f", toppingsTotal));
-                }
+                //set up add toppings button
+                addToppingsButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent addToppingsIntent = new Intent(AddToppingsActivity.this, ItemDetails.class);
+
+                        //pass item name, list of toppings (as special instructions) in intent
+                        addToppingsIntent.putExtra("category", intentCategory);
+                        addToppingsIntent.putExtra("productTitle", intentTitle);
+                        addToppingsIntent.putExtra("specialInstructions", "Add " + addToppingsList);
+                        addToppingsIntent.putExtra("extraToppingsPrice", String.valueOf(toppingsTotal));
+                        startActivity(addToppingsIntent);
+                    }
+                });
             }
 
             @NonNull

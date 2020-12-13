@@ -3,16 +3,18 @@ package com.example.slicemobileapp4.models;
 public class ItemModel {
 
     String name, description, smallPrice, mediumPrice, largePrice;
+    String extraToppingPrice;
 
     public ItemModel() {
     }
 
-    public ItemModel(String name, String description, String smallPrice, String mediumPrice, String largePrice) {
+    public ItemModel(String name, String description, String smallPrice, String mediumPrice, String largePrice, String extraToppingPrice) {
         this.name = name;
         this.description = description;
         this.smallPrice = smallPrice;
         this.mediumPrice = mediumPrice;
         this.largePrice = largePrice;
+        this.extraToppingPrice = extraToppingPrice;
     }
 
     public String getName() {
@@ -54,4 +56,8 @@ public class ItemModel {
     public void setLargePrice(String largePrice) {
         this.largePrice = largePrice;
     }
+
+    public String getExtraToppingPrice() { return extraToppingPrice; }
+
+    public void setExtraToppingPrice(String extraToppingPrice) { this.extraToppingPrice = extraToppingPrice; }
 }
