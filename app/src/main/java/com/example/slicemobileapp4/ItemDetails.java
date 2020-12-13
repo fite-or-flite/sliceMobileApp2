@@ -71,9 +71,7 @@ public class ItemDetails extends AppCompatActivity {
         }
         if (intentToppingPrice == null) {
             intentToppingPrice = "";
-            Toast.makeText(getApplicationContext(), "intent topping price was null", Toast.LENGTH_SHORT).show();
         }
-
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference()
                 .child(intentCategory)
@@ -132,13 +130,12 @@ public class ItemDetails extends AppCompatActivity {
         addItemToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//get user phone id
-            String currentUser = Prevalent.currentUser.getPhone(); // string to store current user's phone id
+            //get user phone id
+            String currentUser = Prevalent.currentUser.getPhone();
             final String itemNameForCart = itemName.getText().toString();
 
-//add product to user's fb db
+            //add product to user's fb db
             final DatabaseReference currentUserReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser);
-
             currentUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -157,13 +154,13 @@ public class ItemDetails extends AppCompatActivity {
                                 .replaceAll("[^\\\\.0123456789]", "");
                     }
                     //add toppings $$ if needed
-                    if (intentToppingPrice != null && !intentToppingPrice.equals("")) {
+                    if (intentToppingPrice != null && !intentToppingPrice.equals("")
+                            && itemPrice != null && !itemPrice.equals("")) {
                         double numericItemPrice = Double.parseDouble(itemPrice);
                         double numbericToppingPrice = Double.parseDouble(intentToppingPrice);
                         double totalPrice = numbericToppingPrice + numericItemPrice;
                         itemPrice = String.valueOf(totalPrice);
                     }
-
 
                     final String itemPriceForCart = itemPrice;
                     HashMap<String, Object> itemDataMap = new HashMap<>();
@@ -176,12 +173,15 @@ public class ItemDetails extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ItemDetails.this, "Added to cart", Toast.LENGTH_SHORT).show();
-
-                                    //send back to homeactivity to continue shopping (dialog choice? "continue" or "gotocart")
-                                    Intent intent = new Intent(ItemDetails.this, HomeActivity.class);
-                                    startActivity(intent);
-
+                                    if (itemPriceForCart.equals("")) {
+                                        Toast.makeText(getApplicationContext(), "Please select size", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        Toast.makeText(ItemDetails.this, "Added to cart", Toast.LENGTH_SHORT).show();
+                                        //send back to homeactivity to continue shopping (dialog choice? "continue" or "gotocart")
+                                        Intent intent = new Intent(ItemDetails.this, HomeActivity.class);
+                                        startActivity(intent);
+                                    }
                                 } else {
                                      Toast.makeText(ItemDetails.this, "Something went wrong please try again.", Toast.LENGTH_SHORT).show();
                                 }
@@ -224,7 +224,8 @@ public class ItemDetails extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "this is for settings", Toast.LENGTH_SHORT).show();
                 return true;
             case android.R.id.home:
-                Intent intent3 = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent3 = new Intent(getApplicationContext(), CategoryDetails.class);
+                intent3.putExtra("category", intentCategory);
                 startActivity(intent3);
                 return true;
         }

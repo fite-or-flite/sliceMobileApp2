@@ -83,17 +83,6 @@ public class ShoppingCart extends AppCompatActivity {
 
                 double addToTotal = Double.parseDouble(itemModel.getPrice());
 
-                //dont need this bc i removed the extraToppingPrice from shopcartmodel
-
-//                if (itemModelExtraToppingsPrice != null && itemModelExtraToppingsPrice !="") {
-//                    addToTotal = addToTotal + Double.parseDouble(itemModelExtraToppingsPrice);
-//                }
-//                else if (itemModelExtraToppingsPrice == null) {
-//                    Toast.makeText(getApplicationContext(), "topping price is null", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (itemModelExtraToppingsPrice.equals("")) {
-//                    Toast.makeText(getApplicationContext(), "topping price is NO TEXT", Toast.LENGTH_SHORT).show();
-//                }
                 String itemModelPrice = "$" + String.format("%.2f", addToTotal);
 
                 shoppingCartProductView.shoppingCartProductName.setText(itemModelName);
