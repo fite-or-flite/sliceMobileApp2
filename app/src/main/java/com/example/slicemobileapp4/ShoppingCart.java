@@ -81,7 +81,10 @@ public class ShoppingCart extends AppCompatActivity {
                 String itemModelInstructions = itemModel.getInstructions();
                 String itemModelExtraToppingsPrice = itemModel.getToppingPrice();
 
-                double addToTotal = Double.parseDouble(itemModel.getPrice());
+                double addToTotal = 0;
+                if (itemModel.getPrice() != null && !itemModel.getPrice().equals("")) {
+                    addToTotal = Double.parseDouble(itemModel.getPrice());
+                }
 
                 String itemModelPrice = "$" + String.format("%.2f", addToTotal);
 

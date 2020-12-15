@@ -1,6 +1,8 @@
 package com.example.slicemobileapp4;
 
 
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -177,16 +180,32 @@ public class ItemDetails extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "Please select size", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
-                                        Toast.makeText(ItemDetails.this, "Added to cart", Toast.LENGTH_SHORT).show();
-                                        //send back to homeactivity to continue shopping (dialog choice? "continue" or "gotocart")
-                                        Intent intent = new Intent(ItemDetails.this, HomeActivity.class);
-                                        startActivity(intent);
+                                        //creates dialog box
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(ItemDetails.this, R.style.MyDialogTheme);
+                                        builder.setTitle("Added to cart")
+                                                .setCancelable(false)
+                                                .setPositiveButton("Continue Shopping", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        Intent intent = new Intent(ItemDetails.this, HomeActivity.class);
+                                                        startActivity(intent);
+                                                    }
+                                                })
+                                                .setNegativeButton("Checkout", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        Intent intent = new Intent(ItemDetails.this, ShoppingCart.class);
+                                                        startActivity(intent);
+                                                    }
+                                                });
+                                        AlertDialog dialog = builder.create();
+                                        dialog.show();
                                     }
                                 } else {
                                      Toast.makeText(ItemDetails.this, "Something went wrong please try again.", Toast.LENGTH_SHORT).show();
                                 }
-                         }
-                            });
+                             }
+                        });
                 }
 
                 @Override
