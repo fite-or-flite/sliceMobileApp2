@@ -48,7 +48,7 @@ public class ItemDetails extends AppCompatActivity {
 
         setUpButtons();
 
-        //setup toolbar
+        //setup toolbar`
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" ");

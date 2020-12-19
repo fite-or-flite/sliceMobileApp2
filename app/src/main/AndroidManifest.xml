@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/slice_swb_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/slice_swb_logo_round"
+        android:roundIcon="@mipmap/slice_swb_logo1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AddToppingsActivity"></activity>
